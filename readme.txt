@@ -107,11 +107,21 @@ git branch -r   # 查看远程分支
 建立本地分支和远程分支的关联，使用git branch --set-upstream branch-name origin/branch-name；
 从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。
 
-9.Rebase
-git rebase 操作可以把本地未 push 的分叉提交历史整理成直线；
-rebase 的目的是使得我们在查看历史提交的变化时更容易，因为分叉的提交需要三方对比。
+9.标签
+git tag <tagname> <commit id> 	# 用于新建一个标签，默认为HEAD，也可以指定一个 commit id；
+git tag -a <tagname> -m "comments"  # 可以指定标签信息；
+git tag		# 可以查看所有标签。
+git show <tagname>	# 查看标签
+git tag -d <tagname> # 删除标签
+git push origin <tagname>  # 推送某个标签到远程库
+git push origin --tags 	#一次性推送全部尚未推送到远程的本地标签
+git push origin :refs/tags/<tagname> # 删除远程标签，需要本地先删除
 
+10.忽略特殊文件
+新建.gitignore文件,然后把要忽略的文件名填进去，Git 就会自动忽略这些文件。
 
+11.配置命令别名
+git config --global alias.last 'log -1'
 
 
 
