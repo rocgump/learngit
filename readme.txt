@@ -3,6 +3,7 @@ Git is free software distributed under the GPL.
 Git has a mutable index called stage.
 Git tracks changes of files.
 
+
 1.创建版本库
 git init 								把当前目录变成 Git 可以管理的仓库
 git add <file>							把文件添加到仓库
@@ -37,10 +38,19 @@ git checkout -- readme.txt
 git reset HEAD <file>	
 该命令可以把暂存区的修改撤销掉（unstage），重新放回工作区。
 
-3.删除文件
-确实要从版本库中删除该文件，那就用命令git rm <file>删掉，并且git commit
-另一种情况是删错了，因为版本库里还有呢，所以可以很轻松地把误删的文件恢复到最新版本：git checkout -- <file>
-git checkout其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以 “一键还原”
-命令git rm用于删除一个文件。如果一个文件已经被提交到版本库，那么你永远不用担心误删，但是要小心，你只能恢复文件到最新版本，你会丢失最近一次提交后你修改的内容
+4.使用Github
+第 1 步，创建 SSH Key，在用户主目录下，看看有没有. ssh 目录，如果有，再看看这个目录下有没有id_rsa和id_rsa.pub这两个文件，如果已经有了，可直接跳到下一步。
+如果没有，打开 Shell（Windows 下打开 Git Bash），创建 SSH Key：sh-keygen -t rsa -C "youremail@example.com"	
+如果一切顺利的话，可以在用户主目录里找到.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是 SSH Key 的秘钥对，id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。
+第 2 步：登陆 GitHub，打开 “Account settings”，“SSH Keys” 页面，然后，点 “Add SSH Key”，填上任意 Title，在 Key 文本框里粘贴id_rsa.pub文件的内容
+第 3 步,Github 上 Create a new repo,在本地仓库运行命令:git remote add origin git@github.com:rocgump/learngit.git,注意替换用户名
+再使用 git push -u origin master 即可把本地库的所有内容推送到远程库上，第一次使用 Git 的clone或者push命令连接 GitHub 时，会得到一个警告，yes确认即可
+
+要关联一个远程库，使用命令 git remote add origin git@server-name:path/repo-name.git；
+关联后，使用命令 git push -u origin master第一次推送 master 分支的所有内容；
+此后，每次本地提交后，只要有必要，就可以使用命令 git push origin master 推送最新修改；
+
+5.从远程库克隆
+git clone git@github.com:rocgump/gitskills.git
 
 
