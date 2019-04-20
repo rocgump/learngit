@@ -49,7 +49,7 @@ git reset HEAD <file>
 
 要关联一个远程库，使用命令 git remote add origin git@server-name:path/repo-name.git；
 关联后，使用命令 git push -u origin master第一次推送 master 分支的所有内容；
-此后，每次本地提交后，只要有必要，就可以使用命令 git push origin master 推送最新修改；
+git push origin master #向远程仓库推送本地更新
 
 git clone git@github.com:rocgump/gitskills.git
 
@@ -122,6 +122,11 @@ git push origin :refs/tags/<tagname> # 删除远程标签，需要本地先删�
 
 11.配置命令别名
 git config --global alias.last 'log -1'
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+配置 Git 的时候，加上--global是针对当前用户起作用的，如果不加，那只针对当前的仓库起作用。
+配置文件放哪了？每个仓库的 Git 配置文件都放在.git/config文件中：
+别名就在[alias]后面，要删除别名，直接把对应的行删掉即可。
+而当前用户的 Git 配置文件放在用户主目录下的一个隐藏文件.gitconfig中：
 
 
 
