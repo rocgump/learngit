@@ -61,4 +61,10 @@ git clone git@github.com:rocgump/gitskills.git
 合并某分支到当前分支：git merge <name>
 删除分支：git branch -d <name>
 
+6.解决冲突
+git merge <branch name>提示有冲突，需要手动合并
+查看冲突文件，Git 用<<<<<<<，=======，>>>>>>>标记出不同分支的内容
+修改后再提交，即可合并
+查看分支的合并情况 git log --graph --pretty=oneline --abbrev-commit
+合并后即可以删除分支
 
