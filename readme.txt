@@ -79,4 +79,45 @@ git stash list 		查看stash list
 另一种方式是用git stash pop，恢复的同时把 stash 内容也删了，再用git stash list查看，就看不到任何 stash 内容了
 你可以多次 stash，恢复的时候，先用git stash list查看，然后恢复指定的 stash，用命令：git stash apply stash@{0}
 
+8.多人协作
+git remote	# 查看远程仓库名称
+git remote -v# 远程仓库名称和地址，如果没有推送权限，就看不到 push 的地址
+git push origin master # 将本地分支推送到远程库对应的远程分支上：
+git checkout -b dev origin/dev	# 克隆并切换到dev分支
+git pull oragin dev	# 从远程拉取dev分支
+git branch --set-upstream-to=origin/dev dev # 建立本地分支和远程分支的关联
+git branch -a   # 查看所有分支
+git branch -r   # 查看远程分支
+
+
+因此，多人协作的工作模式通常是这样：
+
+1.首先，可以试图用git push origin <branch-name>推送自己的修改；
+2.如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；
+3.如果合并有冲突，则解决冲突，并在本地提交；
+4.没有冲突或者解决掉冲突后，再用git push origin <branch-name>推送就能成功！
+如果git pull提示no tracking information，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream-to <branch-name> origin/<branch-name>。
+这就是多人协作的工作模式，一旦熟悉了，就非常简单。
+
+小结
+查看远程库信息，使用git remote -v；
+本地新建的分支如果不推送到远程，对其他人就是不可见的；
+从本地推送分支，使用git push origin branch-name，如果推送失败，先用git pull抓取远程的新提交；
+在本地创建和远程分支对应的分支，使用git checkout -b branch-name origin/branch-name，本地和远程分支的名称最好一致；
+建立本地分支和远程分支的关联，使用git branch --set-upstream branch-name origin/branch-name；
+从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。
+
+9.Rebase
+git rebase 操作可以把本地未 push 的分叉提交历史整理成直线；
+rebase 的目的是使得我们在查看历史提交的变化时更容易，因为分叉的提交需要三方对比。
+
+
+
+
+
+
+
+
+
+
 
