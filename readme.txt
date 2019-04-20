@@ -5,7 +5,6 @@ Git tracks changes of files.
 Creating a new branch is quick and simple.
 
 
-
 1.创建版本库
 git init 								把当前目录变成 Git 可以管理的仓库
 git add <file>							把文件添加到仓库
@@ -60,6 +59,7 @@ git clone git@github.com:rocgump/gitskills.git
 切换分支：git checkout <name>
 创建 + 切换分支：git checkout -b <name>
 合并某分支到当前分支：git merge <name>
+禁用Fast forward合并分支 git merge --no-ff -m "merge with no-ff" dev
 删除分支：git branch -d <name>
 
 6.解决冲突
