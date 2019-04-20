@@ -1,5 +1,5 @@
 Git is a distributed version control system.
-Git is a free software distributed under the GPL.
+Git is free software distributed under the GPL.
 Git has a mutable index called stage.
 Git tracks changes of files.
 Creating a new branch is quick and simple.
@@ -68,4 +68,15 @@ git merge <branch name>提示有冲突，需要手动合并
 修改后再提交，即可合并
 查看分支的合并情况 git log --graph --pretty=oneline --abbrev-commit
 合并后即可以删除分支
+
+7.Bug 分支
+git stash			保存工作区
+git stash list 		查看stash list 
+
+修复Bug后切换回工作分支
+工作现场还在，Git 把 stash 内容存在某个地方了，但是需要恢复一下，有两个办法：
+一是用git stash apply恢复，但是恢复后，stash 内容并不删除，你需要用git stash drop来删除；
+另一种方式是用git stash pop，恢复的同时把 stash 内容也删了，再用git stash list查看，就看不到任何 stash 内容了
+你可以多次 stash，恢复的时候，先用git stash list查看，然后恢复指定的 stash，用命令：git stash apply stash@{0}
+
 
