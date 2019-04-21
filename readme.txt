@@ -4,6 +4,11 @@ Git has a mutable index called stage.
 Git tracks changes of files.
 Creating a new branch is quick and simple.
 
+IntelliJ IDEA is a full-featured IDE
+with a high level of usability and outstanding
+advanced code editing and refactoring support.
+
+
 
 1.创建版本库
 git init 								把当前目录变成 Git 可以管理的仓库
